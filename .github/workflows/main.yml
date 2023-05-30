@@ -9,7 +9,15 @@ jobs:
         id: hello
         uses: sffortytwo/data-platform-pipeline@main
         with:
-          args: '{"path": ".", "lint": true, "unittest": true, "plan": false, "deploy": false}'
+          args: |
+            {
+              "path": ".",
+              "lint": true,
+              "unittest": true,
+              "plan": false,
+              "deploy": false,
+              "environments": ["a", "b"]
+            }
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
